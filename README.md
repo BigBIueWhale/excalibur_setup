@@ -1,6 +1,6 @@
 # Setting up EXC-1553UNET/P2-M as a Remote Terminal (RT) Simulator 🚀
 
-[The Device](./device_image.jpeg)
+![The Device](./device_image.jpeg)
 
 ## Prerequisites 📋
 - Fresh Windows 10 installation 💻
