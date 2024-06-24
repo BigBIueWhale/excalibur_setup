@@ -58,3 +58,7 @@
    2. You can also use the Discrete Generator (Start > All Programs > Excalibur > Discrete Generator > Discrete Generator Tool) to test the discrete I/O functionality.
 
 This setup will allow you to simulate an RT with the EXC-1553UNET/P2-M device, configure its response to command words, and monitor the bus traffic using the provided Excalibur software tools on a Windows 10 system. 🚀✨
+
+## Regular Operation (once everything is configured)
+
+![Sequence diagram SVG](./operation_sequence_diagram.svg)

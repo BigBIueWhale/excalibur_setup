@@ -1,0 +1,43 @@
+@startuml
+actor User
+participant "Merlin+ Software" as Merlin
+participant "EXC-1553UNET/P2-M" as Device
+participant "MIL-STD-1553 Bus" as Bus
+participant "Bus Controller" as BC
+
+User -> Merlin: Start RT simulation
+activate Merlin
+
+Merlin -> Device: Configure as RT
+activate Device
+Device --> Merlin: Configuration confirmed
+
+loop RT Operation
+    BC -> Bus: Send command word
+    Bus -> Device: Receive command word
+    
+    alt Transmit data
+        Device -> Device: Process command
+        Device -> Bus: Transmit data
+        Bus -> BC: Data received
+    else Receive data
+        BC -> Bus: Send data
+        Bus -> Device: Receive data
+        Device -> Device: Store data
+    end
+    
+    Device -> Bus: Send status word
+    Bus -> BC: Status word received
+end
+
+User -> Merlin: Monitor bus traffic
+Merlin -> Device: Request bus data
+Device --> Merlin: Send bus data
+Merlin --> User: Display bus traffic
+
+User -> Merlin: Stop RT simulation
+Merlin -> Device: Stop simulation
+deactivate Device
+deactivate Merlin
+
+@enduml
